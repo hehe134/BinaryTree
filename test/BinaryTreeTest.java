@@ -1,48 +1,356 @@
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.SortedSet;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BinaryTreeTest {
+    BinaryTree<Integer> bst = new BinaryTree<Integer>() {
+        @Override
+        public Iterator<Integer> iterator() {
+            return null;
+        }
+
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public Comparator<? super Integer> comparator() {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> subSet(Integer fromElement, Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> headSet(Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> tailSet(Integer fromElement) {
+            return null;
+        }
+
+        @Override
+        public Integer first() {
+            return null;
+        }
+
+        @Override
+        public Integer last() {
+            return null;
+        }
+    };
+    BinaryTree bst1 = new BinaryTree() {
+        @Override
+        public Iterator iterator() {
+            return null;
+        }
+
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public Comparator comparator() {
+            return null;
+        }
+
+        @Override
+        public SortedSet subSet(Object fromElement, Object toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet headSet(Object toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet tailSet(Object fromElement) {
+            return null;
+        }
+
+        @Override
+        public Object first() {
+            return null;
+        }
+
+        @Override
+        public Object last() {
+            return null;
+        }
+    };
+    BinaryTree<Integer> bst2 = new BinaryTree<Integer>() {
+        @Override
+        public Iterator<Integer> iterator() {
+            return null;
+        }
+
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public Comparator<? super Integer> comparator() {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> subSet(Integer fromElement, Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> headSet(Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> tailSet(Integer fromElement) {
+            return null;
+        }
+
+        @Override
+        public Integer first() {
+            return null;
+        }
+
+        @Override
+        public Integer last() {
+            return null;
+        }
+    };
+    BinaryTree<Integer> bst2t = new BinaryTree<Integer>() {
+        @Override
+        public Iterator<Integer> iterator() {
+            return null;
+        }
+
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public Comparator<? super Integer> comparator() {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> subSet(Integer fromElement, Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> headSet(Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> tailSet(Integer fromElement) {
+            return null;
+        }
+
+        @Override
+        public Integer first() {
+            return null;
+        }
+
+        @Override
+        public Integer last() {
+            return null;
+        }
+    };
+    BinaryTree<Integer> bst2t1 = new BinaryTree<Integer>() {
+        @Override
+        public Iterator<Integer> iterator() {
+            return null;
+        }
+
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public Comparator<? super Integer> comparator() {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> subSet(Integer fromElement, Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> headSet(Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> tailSet(Integer fromElement) {
+            return null;
+        }
+
+        @Override
+        public Integer first() {
+            return null;
+        }
+
+        @Override
+        public Integer last() {
+            return null;
+        }
+    };
+    BinaryTree<Integer> bst3 = new BinaryTree<Integer>() {
+        @Override
+        public Iterator<Integer> iterator() {
+            return null;
+        }
+
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public Comparator<? super Integer> comparator() {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> subSet(Integer fromElement, Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> headSet(Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> tailSet(Integer fromElement) {
+            return null;
+        }
+
+        @Override
+        public Integer first() {
+            return null;
+        }
+
+        @Override
+        public Integer last() {
+            return null;
+        }
+    };
+    BinaryTree<Integer> bst3t = new BinaryTree<Integer>() {
+        @Override
+        public Iterator<Integer> iterator() {
+            return null;
+        }
+
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public Comparator<? super Integer> comparator() {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> subSet(Integer fromElement, Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> headSet(Integer toElement) {
+            return null;
+        }
+
+        @Override
+        public SortedSet<Integer> tailSet(Integer fromElement) {
+            return null;
+        }
+
+        @Override
+        public Integer first() {
+            return null;
+        }
+
+        @Override
+        public Integer last() {
+            return null;
+        }
+    };
 
     @Test
     void remove() {
-        int[] keys = new int[]{15, 6, 18, 3, 7, 13, 20, 2, 9, 4};
-        BinaryTree bst = new BinaryTree();
-        bst = bst.getTree(keys);
 
-        int[] keys1 = new int[]{15, 6, 3, 7, 13, 20, 2, 9, 4};
-        BinaryTree bst1 = new BinaryTree();
-        bst1 = bst1.getTree(keys1);
-        bst.remove(bst.search(18));
-        assertTrue(new BinaryTree().isSameTree(bst.root, bst1.root));
+        bst.add1(18);
+        bst.add1(6);
+        bst.add1(3);
 
-        int[] keys2 = new int[]{15, 6, 3, 7, 13, 2, 9, 4};
-        BinaryTree bst2 = new BinaryTree();
-        bst2 = bst2.getTree(keys2);
-        bst.remove(bst.search(20));
-        assertTrue(new BinaryTree().isSameTree(bst.root, bst2.root));
+        bst1.add1(18);
+        bst1.add1(3);
+        bst.remove(bst.search(bst.root, 6));
+        assertTrue(bst.isSameTree(bst.root, bst1.root)); //bst:18,6,3->18,3
 
-        int[] keys3 = new int[]{15, 6, 3, 13, 2, 9, 4};
-        BinaryTree bst3 = new BinaryTree();
-        bst3 = bst3.getTree(keys3);
-        bst.remove(bst.search(7));
-        assertTrue(new BinaryTree().isSameTree(bst.root, bst3.root));
 
-        int[] keys4 = new int[]{15, 6, 3, 7, 13, 2, 4};
-        BinaryTree bst4 = new BinaryTree();
-        bst4 = bst4.getTree(keys4);
-        assertFalse(new BinaryTree().isSameTree(bst.root, bst4.root));
+        bst2.add1(8);
+        bst2.add1(9);
+        bst2.add1(10);
 
-        int[] keys_0 = new int[]{42, 15, 45, 3, 16, 13, 20, 33, 9, 55, 24};
-        BinaryTree bst_0 = new BinaryTree();
-        bst_0 = bst_0.getTree(keys_0);
+        bst2t.add1(8);
+        bst2t.add1(10);
 
-        int[] keys_1 = new int[]{42, 15, 45, 3, 16, 13, 20, 9, 55, 24};
-        BinaryTree bst_1 = new BinaryTree();
-        bst_1 = bst_1.getTree(keys_1);
-        bst_0.remove(bst_0.search(33));
-        assertTrue(new BinaryTree().isSameTree(bst_0.root, bst_1.root));
+        bst2.remove(bst.search(bst2.root, 9));
+        assertTrue(bst.isSameTree(bst2.root, bst2t.root));//bst2:8,9,10->8,10
 
+
+        bst2t1.add1(8);
+
+        bst2.remove(bst.search(bst2.root, 10));
+        assertTrue(bst2.isSameTree(bst2.root, bst2t1.root));//bst2:8,10 -> 8
+
+
+        bst3.add1(8);
+        bst3.add1(4);
+        bst3.add1(10);
+        bst3.add1(2);
+        bst3.add1(6);
+        bst3.add1(1);
+        bst3.add1(3);
+
+
+        bst3t.add1(8);
+        bst3t.add1(3);
+        bst3t.add1(10);
+        bst3t.add1(2);
+        bst3t.add1(6);
+        bst3t.add1(1);
+
+        bst3.remove(bst3.search(bst3.root, 4));
+        assertTrue(bst3.isSameTree(bst3.root, bst3t.root));
+//           8                                     8
+//          /  \                                  / \
+//        4     10                               3  10
+//       /  \                                   / \
+//      2    6                                 2   6
+//     / \                        ->          / \
+//    1   3                                  1
     }
 
 }

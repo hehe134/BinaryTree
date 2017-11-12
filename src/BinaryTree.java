@@ -1,63 +1,62 @@
+import java.util.AbstractSet;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.SortedSet;
 
-
-public class BinaryTree {
-    TreeNode root = null;
+public abstract class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implements SortedSet<T> {
+    TreeNode<T> root = null;
 //    private List<TreeNode> nodeList = new ArrayList<TreeNode>();
 
-    private class TreeNode {
-        int key;
+    public class TreeNode<T> {
+        T key;
         TreeNode leftChild;
         TreeNode rightChild;
         TreeNode parent;
 
-        TreeNode(int key, TreeNode leftChild, TreeNode rightChild, TreeNode parent) {
+        TreeNode(T key, TreeNode leftChild, TreeNode rightChild, TreeNode parent) {
             this.key = key;
             this.leftChild = leftChild;
             this.rightChild = rightChild;
             this.parent = parent;
         }
 
-        int getKey() {
-            return key;
-        }
-
-        boolean isEmpty() {
-
-            return root == null;
-        }
     }
 
-    private void add(int key) {
-        TreeNode parentN = null;
-        TreeNode newNode = new TreeNode(key, null, null, null);
-        TreeNode pNode = root;
+    public void add1(T key) {
+        TreeNode<T> parentN = null;
+        TreeNode<T> newNode = new TreeNode(key, null, null, null);
+        TreeNode<T> pNode = root;
         if (root == null) {
             root = newNode;
             return;
         }
+        int c=0;
         while (pNode != null) {
             parentN = pNode;
-            if (key < pNode.key) {
+            c=key.compareTo(pNode.key);
+            if (c<0) {
                 pNode = pNode.leftChild;
-            } else if (key > pNode.key) {
+            } else if (c>0) {
                 pNode = pNode.rightChild;
             } else {
                 return;
             }
         }
-        if (key < parentN.key) {
+        if (key.compareTo(parentN.key)<0) {
             parentN.leftChild = newNode;
             newNode.parent = parentN;
         } else {
             parentN.rightChild = newNode;
             newNode.parent = parentN;
         }
+
     }
 
-    TreeNode search(int key) {
-        TreeNode p = root;
-        while (p != null && p.key != key) {
-            if (key < p.key) p = p.leftChild;
+
+
+    TreeNode search(TreeNode<T> p, T key) {
+        while (p != null && key.compareTo(p.key) != 0) {
+            if (key.compareTo(p.key) == -1) p = p.leftChild;
             else p = p.rightChild;
         }
         return p;
@@ -80,11 +79,14 @@ public class BinaryTree {
     }
 
     void remove(TreeNode p) {
+
+
         if (p == null) return;
         if (p.leftChild == null && p.rightChild == null) {
             TreeNode parentNode = p.parent;
             if (p == parentNode.leftChild) parentNode.leftChild = null;
             else parentNode.rightChild = null;
+
         } else if (p.leftChild == null) {
             TreeNode parentNode = p.parent;
             if (p == parentNode.leftChild) {
@@ -94,6 +96,7 @@ public class BinaryTree {
                 parentNode.rightChild = p.rightChild;
                 p.rightChild.parent = parentNode;
             }
+
         } else if (p.rightChild == null) {
             TreeNode parentNode = p.parent;
             if (p == parentNode.leftChild) {
@@ -103,30 +106,26 @@ public class BinaryTree {
                 parentNode.rightChild = p.leftChild;
                 p.leftChild.parent = parentNode;
             }
+
         } else {
-            p.key = max(p.leftChild).getKey();
+            p.key = max(p.leftChild).key;
             remove(max(p.leftChild));
         }
     }
 
 
-    BinaryTree getTree(int[] keys) {
-        BinaryTree a = new BinaryTree();
-        for (int key : keys) {
-            a.add(key);
-        }
-        return a;
-    }
-
-
-    boolean isSameTree(TreeNode p, TreeNode q) {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
         if ((p == null && q != null) || (p != null && q == null)) {
             return false;
         }
-        if (p != null) {
-            if (!(p.key == q.key)) return false;
+        if (p != null && q != null) {
+            if (!(p.key == q.key)) {
+                return false;
+            }
         }
-        if (!(p == null)) {
+        if (p == null && q == null) {
+
+        } else {
             if (!isSameTree(p.leftChild, q.leftChild)) {
                 return false;
             }
@@ -134,6 +133,8 @@ public class BinaryTree {
                 return false;
             }
         }
+
         return true;
     }
+
 }
