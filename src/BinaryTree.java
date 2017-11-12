@@ -1,6 +1,5 @@
 import java.util.AbstractSet;
-import java.util.Comparator;
-import java.util.Iterator;
+
 import java.util.SortedSet;
 
 public abstract class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implements SortedSet<T> {
