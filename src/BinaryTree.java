@@ -1,8 +1,7 @@
-import java.util.AbstractSet;
+import java.util.*;
 
-import java.util.SortedSet;
 
-public abstract class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implements SortedSet<T> {
+public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implements SortedSet<T> {
     TreeNode<T> root = null;
 //    private List<TreeNode> nodeList = new ArrayList<TreeNode>();
 
@@ -21,6 +20,7 @@ public abstract class BinaryTree<T extends Comparable<T>> extends AbstractSet<T>
 
     }
 
+
     public void add1(T key) {
         TreeNode<T> parentN = null;
         TreeNode<T> newNode = new TreeNode(key, null, null, null);
@@ -29,19 +29,19 @@ public abstract class BinaryTree<T extends Comparable<T>> extends AbstractSet<T>
             root = newNode;
             return;
         }
-        int c=0;
+        int c = 0;
         while (pNode != null) {
             parentN = pNode;
-            c=key.compareTo(pNode.key);
-            if (c<0) {
+            c = key.compareTo(pNode.key);
+            if (c < 0) {
                 pNode = pNode.leftChild;
-            } else if (c>0) {
+            } else if (c > 0) {
                 pNode = pNode.rightChild;
             } else {
                 return;
             }
         }
-        if (key.compareTo(parentN.key)<0) {
+        if (key.compareTo(parentN.key) < 0) {
             parentN.leftChild = newNode;
             newNode.parent = parentN;
         } else {
@@ -50,7 +50,6 @@ public abstract class BinaryTree<T extends Comparable<T>> extends AbstractSet<T>
         }
 
     }
-
 
 
     TreeNode search(TreeNode<T> p, T key) {
@@ -136,4 +135,44 @@ public abstract class BinaryTree<T extends Comparable<T>> extends AbstractSet<T>
         return true;
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
+
+
+    @Override
+    public SortedSet<T> headSet(T toElement) {
+        return null;
+    }
+
+    @Override
+    public T first() {
+        return null;
+    }
+
+    @Override
+    public Comparator<? super T> comparator() {
+        return null;
+    }
+
+    @Override
+    public SortedSet<T> subSet(T fromElement, T toElement) {
+        return null;
+    }
+
+    @Override
+    public SortedSet<T> tailSet(T fromElement) {
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public T last() {
+        return null;
+    }
 }
