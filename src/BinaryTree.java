@@ -7,9 +7,9 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
 
     public class TreeNode<T> {
         T key;
-        TreeNode leftChild;
-        TreeNode rightChild;
-        TreeNode parent;
+        TreeNode<T> leftChild;
+        TreeNode<T> rightChild;
+        TreeNode<T> parent;
 
         TreeNode(T key, TreeNode leftChild, TreeNode rightChild, TreeNode parent) {
             this.key = key;
@@ -29,7 +29,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
             root = newNode;
             return;
         }
-        int c = 0;
+        int c;
         while (pNode != null) {
             parentN = pNode;
             c = key.compareTo(pNode.key);
@@ -60,33 +60,34 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         return p;
     }
 
-    private TreeNode max(TreeNode node) {
-        TreeNode p = node;
+    private TreeNode<T> max(TreeNode<T> node) {
+        TreeNode<T> p = node;
         while (p.rightChild != null) {
             p = p.rightChild;
         }
         return p;
     }
 
-    TreeNode min(TreeNode node) {
-        TreeNode pNode = node;
+    TreeNode<T> min(TreeNode<T> node) {
+        TreeNode<T> pNode = node;
         while (pNode.leftChild != null) {
             pNode = pNode.leftChild;
         }
         return pNode;
     }
 
-    void remove(TreeNode p) {
+    @Override
+    public boolean remove(Object o) {
 
-
-        if (p == null) return;
+        TreeNode<T> p = (TreeNode<T>) o;
+        if (p == null) return false;
         if (p.leftChild == null && p.rightChild == null) {
-            TreeNode parentNode = p.parent;
+            TreeNode<T> parentNode = p.parent;
             if (p == parentNode.leftChild) parentNode.leftChild = null;
             else parentNode.rightChild = null;
 
         } else if (p.leftChild == null) {
-            TreeNode parentNode = p.parent;
+            TreeNode<T> parentNode = p.parent;
             if (p == parentNode.leftChild) {
                 parentNode.leftChild = p.rightChild;
                 p.rightChild.parent = parentNode;
@@ -96,7 +97,7 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
             }
 
         } else if (p.rightChild == null) {
-            TreeNode parentNode = p.parent;
+            TreeNode<T> parentNode = p.parent;
             if (p == parentNode.leftChild) {
                 parentNode.leftChild = p.leftChild;
                 p.leftChild.parent = parentNode;
@@ -109,10 +110,11 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
             p.key = max(p.leftChild).key;
             remove(max(p.leftChild));
         }
+        return true;
     }
 
 
-    public boolean isSameTree(TreeNode p, TreeNode q) {
+    public boolean isSameTree(TreeNode<T> p, TreeNode<T> q) {
         if ((p == null && q != null) || (p != null && q == null)) {
             return false;
         }

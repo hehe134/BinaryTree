@@ -22,9 +22,10 @@ class BinaryTreeTest {
         bst1.add1(18);
         bst1.add1(3);
         bst.remove(bst.search(bst.root, 6));
-        assertTrue(bst.isSameTree(bst.root, bst1.root)); //bst:18,6,3->18,3
-
-
+        assertTrue(bst.isSameTree(bst.root, bst1.root));
+//      18              18
+//    6       ->      3
+//  3
         bst2.add1(8);
         bst2.add1(9);
         bst2.add1(10);
@@ -34,8 +35,9 @@ class BinaryTreeTest {
 
         bst2.remove(bst.search(bst2.root, 9));
         assertTrue(bst.isSameTree(bst2.root, bst2t.root));//bst2:8,9,10->8,10
-
-
+//         8              8
+//            9     ->       10
+//               10
         bst2t1.add1(8);
 
         bst2.remove(bst.search(bst2.root, 10));
@@ -62,10 +64,10 @@ class BinaryTreeTest {
         assertTrue(bst3.isSameTree(bst3.root, bst3t.root));
 //           8                                     8
 //          /  \                                  / \
-//        4     10                               3  10
+//     -> 4     10                               3  10
 //       /  \                                   / \
-//      2    6                                 2   6
-//     / \                        ->          / \
+//      2    6                remove 4         2   6
+//     / \                     ----->         / \
 //    1   3                                  1
     }
 
